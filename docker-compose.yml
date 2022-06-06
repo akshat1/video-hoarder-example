@@ -10,11 +10,11 @@ services:
       PG_HOST: db
       PG_PORT: 5432
       PG_USER: postgres
-      PG_PASSWORD: postgres
-      DB_NAME: video-hoarder-prod
-      # APP_HOST: localhost
-      # APP_PORT: 8080
-      # APP_SCHEME: http
+      PG_PASSWORD: secretpassword
+      DB_NAME: video-hoarder
+      APP_HOST: mysubdomain.mydomain.com
+      EXPOSED_PORT: 443
+      APP_SCHEME: https
     volumes:
       - ~/Downloads:/workspace/downloads/admin
       - ./location.yml:/workspace/config/location.yml
@@ -25,7 +25,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: secretpassword
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
 
